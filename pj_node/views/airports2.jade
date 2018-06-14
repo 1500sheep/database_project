@@ -1,0 +1,45 @@
+extends ./layout
+
+block content
+    nav
+        .nav-wrapper
+            .col.s12
+                a.breadcrumb(href='#!') First
+                -if(airportstatus > 1){
+                    a.breadcrumb(href='#!') Second
+                    -if(airportstatus > 2){
+                        a.breadcrumb(href='#!') Thrid
+                    -}
+                -}
+
+    h4 #{name}, Airport Schedule2
+    br
+    a(href='/main') Main
+    table.striped.centered
+        thead
+            tr
+                th 번호
+                th 항공사
+                th 항공기
+                th 출발시간
+                th 도착시간
+                th 도착 공항
+                th 체크인
+                th 게이트 번호
+                th 인 / 아웃
+                th 터미널
+
+        tbody
+            - for(var i=0;i<count;i++){
+                tr
+                    td #{i+1}
+                    td #{info[i].airline}
+                    td #{info[i].flightId}
+                    td #{info[i].scheduleDateTime}
+                    td #{info[i].estimatedDateTime}
+                    td #{info[i].airport}
+                    td #{info[i].chkinrange}
+                    td #{info[i].gatenumber}
+                    td #{info[i].io}
+                    td #{info[i].terminalid}
+            - }

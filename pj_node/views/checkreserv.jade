@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    h2 #{name}
+    h3 Check Reservation
+    a(href='/main') Main
+
+    table.striped.centered
+        thead
+            tr
+                th 번호
+                th GO
+                th BACK
+                th 예약 확인
+        tbody
+            - for(var i=0;i<count;i++){
+            tr
+                td #{i + 1}
+                td #{reservation[i].departInfo}
+                td #{reservation[i].arriveInfo}
+                td
+                    button(class="btn waves-effect waves-light", type="submit" ,name="action") 예약 취소
+            - }
+            tr
+                td Total
+                td 131,600 won
+                td 123,100 won
+                td
+                    form(action='/pdf',method='post').col.s12
+                        button(class="btn waves-effect waves-light", type="submit" ,name="action") 파일로 저장
+

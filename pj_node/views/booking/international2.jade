@@ -1,0 +1,40 @@
+extends ../layout
+
+block content
+    nav
+        .nav-wrapper
+            .col.s12
+                a.breadcrumb(href='#!') First
+                -if(interstatus > 1){
+                a.breadcrumb(href='#!') Second
+                -if(interstatus > 2){
+                a.breadcrumb(href='#!') Thrid
+                -}
+                -}
+    h4 #{name}, International Airport
+    br
+
+    .row
+        form(action='/checkreservation',method='post').col.s12
+            .input-field.col.s12
+                select(name='choosedepart')
+                    option(value='', disabled='', selected='') 항공사 , 시간 , I/O , 공항 , 항공기 , 날짜
+                    - for (var i =0;i<go;i++){
+                    option(value='#{depart[i].airFln},#{depart[i].airlineKorean},#{depart[i].airport},#{depart[i].arrivedKor},#{depart[i].boardingKor},#{depart[i].etd},#{depart[i].io}')  #{depart[i].airlineKorean}, #{depart[i].etd} , #{depart[i].io} , #{depart[i].airport} , #{depart[i].airFln} , #{depart[i].createdAt}
+                    - }
+                label #{depart[0].boardingKor} to #{depart[0].arrivedKor}
+
+            .input-field.col.s12
+                select(name='choosearrive')
+                    option(value='', disabled='', selected='') 항공사 , 시간 , I/O , 공항 , 항공기
+                    - for (var i =0;i<back;i++){
+                    option(value='#{arrive[i].airFln},#{arrive[i].airlineKorean},#{arrive[i].airport},#{arrive[i].arrivedKor},#{arrive[i].boardingKor},#{arrive[i].etd},#{arrive[i].io}')  #{arrive[i].airlineKorean}, #{arrive[i].etd} , #{arrive[i].io} , #{arrive[i].airport} , #{arrive[i].airFln} , #{arrive[i].createdAt}
+                    - }
+                label #{arrive[0].boardingKor} to #{arrive[0].arrivedKor}
+
+            button(class="btn waves-effect waves-light", type="submit" ,name="action") Choose
+
+    script.
+        $(document).ready(function () {
+            $('select').material_select();
+        });

@@ -1,0 +1,86 @@
+extends ../layout
+
+block content
+    nav
+        .nav-wrapper
+            .col.s12
+                a.breadcrumb(href='#!') First
+                -if(domstatus > 1){
+                    a.breadcrumb(href='#!') Second
+                    -if(domstatus > 2){
+                    a.breadcrumb(href='#!') Thrid
+                    -}
+                -}
+    h4 #{name}, Domestic Airport
+    br
+
+    .row
+        form(action='/domestic2',method='post').col.s12
+            .input-field.col.s12
+                select(name='departairport')
+                    option(value='', disabled='', selected='') Choose Depart Airport
+                    option(value='NAARKTU') 청주
+                    option(value='NAARKPC') 제주
+                    option(value='NAARKSS') 김포
+                    option(value='NAARKPS') 사천
+                    option(value='NAARKSI') 인천
+                    option(value='NAARKTH') 포항
+                    option(value='NAARKJK') 군산
+                    option(value='NAARKJJ') 광주
+                    option(value='NAARKJB') 무안
+                    option(value='NAARKPK') 부산, 김해
+                    option(value='NAARKJY') 여수
+                    option(value='NAARKTN') 대구
+                    option(value='NAARKPU') 울산
+                    option(value='NAARKNW') 횡성/원주
+                    option(value='NAARKNY') 양양
+                    label Materialize Select
+
+            .input-field.col.s12
+                select(name='arriveairport')
+                    option(value='', disabled='', selected='') Choose Arrive Airport
+                    option(value='NAARKTU') 청주
+                    option(value='NAARKPC') 제주
+                    option(value='NAARKSS') 김포
+                    option(value='NAARKPS') 사천
+                    option(value='NAARKSI') 인천
+                    option(value='NAARKTH') 포항
+                    option(value='NAARKJK') 군산
+                    option(value='NAARKJJ') 광주
+                    option(value='NAARKJB') 무안
+                    option(value='NAARKPK') 부산, 김해
+                    option(value='NAARKJY') 여수
+                    option(value='NAARKTN') 대구
+                    option(value='NAARKPU') 울산
+                    option(value='NAARKNW') 횡성/원주
+                    option(value='NAARKNY') 양양
+                    label Materialize Select
+
+            input.datepicker(type='text', placeholder='depart day',name='departday')
+            input.datepicker(type='text', placeholder='arrive day',name='arriveday')
+            button(class="btn waves-effect waves-light", type="submit" ,name="action") Search
+
+    script.
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false // Close upon selecting a date,
+        });
+
+        $('.timepicker').pickatime({
+            default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+            fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+            twelvehour: false, // Use AM/PM or 24-hour format
+            donetext: 'OK', // text for done-button
+            cleartext: 'Clear', // text for clear-button
+            canceltext: 'Cancel', // Text for cancel-button
+            autoclose: false, // automatic close timepicker
+            ampmclickable: true, // make AM PM clickable
+            aftershow: function(){} //Function for after opening timepicker
+        });

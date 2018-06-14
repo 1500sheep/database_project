@@ -1,0 +1,42 @@
+extends ./layout
+
+block content
+    nav
+        .nav-wrapper
+            .col.s12
+                a.breadcrumb(href='#!') First
+                -if(airportstatus > 1){
+                    a.breadcrumb(href='#!') Second
+                    -if(airportstatus > 2){
+                        a.breadcrumb(href='#!') Thrid
+                    -}
+                -}
+    h4 #{name}, Airport Schedule
+    br
+
+    .row
+        form(action='/airport1',method='get').col.s12
+            .input-field.col.s12
+                select(name='airport')
+                    option(value='', disabled='', selected='') Choose Airport
+                    option(value='NAARKTU') 청주
+                    option(value='NAARKPC') 제주
+                    option(value='NAARKSS') 김포
+                    option(value='NAARKPS') 사천
+                    option(value='NAARKSI') 인천
+                    option(value='NAARKTH') 포항
+                    option(value='NAARKJK') 군산
+                    option(value='NAARKJJ') 광주
+                    option(value='NAARKJB') 무안
+                    option(value='NAARKPK') 부산, 김해
+                    option(value='NAARKJY') 여수
+                    option(value='NAARKTN') 대구
+                    option(value='NAARKPU') 울산
+                    option(value='NAARKNW') 횡성/원주
+                    option(value='NAARKNY') 양양
+                    label Materialize Select
+
+
+
+
+

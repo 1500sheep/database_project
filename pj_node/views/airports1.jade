@@ -1,0 +1,34 @@
+extends ./layout
+
+block content
+    nav
+        .nav-wrapper
+            .col.s12
+                a.breadcrumb(href='#!') First
+                -if(airportstatus > 1){
+                    a.breadcrumb(href='#!') Second
+                    -if(airportstatus > 2){
+                        a.breadcrumb(href='#!') Thrid
+                    -}
+                -}
+    h4 #{name}, Airport Schedule
+    br
+
+    .row
+        form(action='/airports2',method='post').col.s12
+            input.datepicker(type='text', placeholder='pick up a date',name='pickdate')
+            button(class="btn waves-effect waves-light", type="submit" ,name="action") Check
+
+
+    script.
+        $(document).ready(function () {
+        });
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false // Close upon selecting a date,
+        });
+

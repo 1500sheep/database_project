@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    title= 'nodejs 실시간 항공예약 프로젝트'
+    link(rel='stylesheet', href='/css/style.css')
+    // Import Google Icon Font
+    
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    // Compiled and minified CSS
+    script(type='text/javascript', src='https://code.jquery.com/jquery-3.2.1.min.js')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css')
+    // Compiled and minified JavaScript
+    
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js')
+    // Import materialize.css
+    
+    link(type='text/css', rel='stylesheet', href='/css/materialize.min.css', media='screen,projection')
+    // 내가 만든css
+    link(type='text/css', rel='stylesheet', href='/css/style.css')
+    // Let browser know website is optimized for mobile
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+
+    
+    script(type='text/javascript', src='/js/materialize.min.js')
+  body
+    block content
+
+    footer.page-footer
+        .container
+            .row
+                .col.l6.s12
+                    h5.white-text airport schedule
+                    p.grey-text.text-lighten-4 FrontEnd : Jade, materialize css, Jquery...
+                    p.grey-text.text-lighten-4 BackEnd : Nodejs, tibero ...
+                .col.l4.offset-l2.s12
+                    h5.white-text Things
+                    ul
+                        li
+                            a.grey-text.text-lighten-3(href='#!') Nodejs
+                        li
+                            a.grey-text.text-lighten-3(href='#!') jade
+                        li
+                            a.grey-text.text-lighten-3(href='#!') Synchronous
+                        li
+                            a.grey-text.text-lighten-3(href='#!') tibero
+
+        .footer-copyright
+            .container
+                a.grey-text.text-lighten-4.right(href='#!') Thank you!

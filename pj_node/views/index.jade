@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  ul#dropdown1.dropdown-content
+    li
+      a(href='airports1') Airports
+    li
+      a(href='domestic1') Dom
+    li
+      a(href='international1') Inter
+    li.divider
+    li
+      a(href='checkreservation') Check
+
+  nav.nav-extended
+    .nav-wrapper
+      a.brand-logo.center(href='#') airport schedule
+
+      ul#nav-mobile.left.hide-on-med-and-down
+        - if(!name){
+          li
+            a(href='signin') Sign In
+          li
+            a(href='signup') Sign UP
+        -}else{
+          li
+            a(href='signout') Sign Out
+          li
+            a.dropdown-button(href='#!', data-activates='dropdown1') Menu
+              i.material-icons.right arrow_drop_down
+
+
+          -}
+
+
+  .carousel
+    a.carousel-item(href='#one!')
+      img(src='images/macbook-left.png')
+    a.carousel-item(href='#two!')
+      img(src='images/office.jpg')
+    a.carousel-item(href='#three!')
+      img(src='images/parallax2.jpg')
+    a.carousel-item(href='#four!')
+      img(src='images/parallax1.jpg')
+    a.carousel-item(href='#five!')
+      img(src='images/sample-1.jpg')
+
+  script.
+      $(document).ready(function () {
+          $('.carousel').carousel();
+          $(".dropdown-button").dropdown();
+      });

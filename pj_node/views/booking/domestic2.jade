@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+
+    nav
+        .nav-wrapper
+            .col.s12
+                a.breadcrumb(href='#!') First
+                -if(domstatus > 1){
+                a.breadcrumb(href='#!') Second
+                    -if(domstatus > 2){
+                    a.breadcrumb(href='#!') Thrid
+                    -}
+                -}
+    h4 #{name}, Domestic Airport
+    br
+    .row
+        form(action='/checkreservation',method='post').col.s12
+            .input-field.col.s12
+                select(name='choosedepart')
+                    option(value='', disabled='', selected='') 항공사 , 출발시간 , 도착시간 , 항공기 , econmoy , prestige
+                    - for (var i =0;i<depart.item.length;i++){
+                        option(value='#{depart.item[i].airlineNm}, #{depart.item[i].arrAirportNm},#{depart.item[i].arrPlandTime},#{depart.item[i].depAirportNm},#{depart.item[i].depPlandTime},#{depart.item[i].economyCharge},#{depart.item[i].prestigeCharge},#{depart.item[i].vihicleId}') #{depart.item[i].airlineNm} , #{depart.item[i].depPlandTime} , #{depart.item[i].arrPlandTime}, #{depart.item[i].vihicleId} , #{depart.item[i].economyCharge} , #{depart.item[i].prestigeCharge}
+                    - }
+                label #{depart.item[0].depAirportNm} to #{depart.item[0].arrAirportNm}
+
+            .input-field.col.s12
+                select(name='choosearrive')
+                    option(value='', disabled='', selected='') 항공사 , 출발시간 , 도착시간 , 항공기 , econmoy , prestige
+                    - for (var i =0;i<depart.item.length;i++){
+                    option(value='#{arrive.item[i].airlineNm},#{arrive.item[i].arrAirportNm},#{arrive.item[i].arrPlandTime},#{arrive.item[i].depAirportNm},#{arrive.item[i].depPlandTime},#{arrive.item[i].economyCharge},#{arrive.item[i].prestigeCharge},#{arrive.item[i].vihicleId}') #{arrive.item[i].airlineNm} , #{arrive.item[i].depPlandTime} , #{arrive.item[i].arrPlandTime}, #{arrive.item[i].vihicleId} , #{arrive.item[i].economyCharge} , #{arrive.item[i].prestigeCharge}
+                    - }
+                label #{arrive.item[0].depAirportNm} to #{arrive.item[0].arrAirportNm}
+            button(class="btn waves-effect waves-light", type="submit" ,name="action") Choose
+
+    script.
+        $(document).ready(function () {
+            $('select').material_select();
+        });
